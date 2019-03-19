@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HelloWebpackPlugin = require("he")
+const GenerateRouterWebpackPlugin = require("generate-router-webpack-plugin");
 const merge = require("webpack-merge");
 const { resolve } = require("path");
 
@@ -12,10 +12,13 @@ module.exports = merge(base, {
   devServer: {
     host: "0.0.0.0",
     hot: true,
-		port: 5001,
-		historyApiFallback: true
+    port: 5001,
+    historyApiFallback: true
   },
   plugins: [
+    new GenerateRouterWebpackPlugin({
+      watchDir: resolve(__dirname, "../src/pages")
+    }),
     new HtmlWebpackPlugin({
       template: resolve(__dirname, "../public/index.html")
     }),

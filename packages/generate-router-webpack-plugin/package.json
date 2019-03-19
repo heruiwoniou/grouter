@@ -1,0 +1,29 @@
+{
+  "name": "generate-router-webpack-plugin",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Rick he <rui.he@logicmonitor.com>",
+  "license": "ISC",
+  "main": "dist/Plugin.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "dev": "npx babel lib --watch -d dist",
+    "build": "npx babel lib -d dist",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4"
+  },
+  "dependencies": {
+    "gaze": "^1.1.3",
+    "pify": "^4.0.1"
+  }
+}
