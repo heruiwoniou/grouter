@@ -2,9 +2,13 @@ import gaze from "gaze";
 
 const Watcher = {
   _instance: null,
-  _options: null,
-  setOptions(options) {
-    this._options = options;
+  _options: {
+    glob: "**/*",
+    watchDir: null
+  },
+  setOptions({ glob = "**/*", watchDir }) {
+    this._options.glob = glob;
+    this._options.watchDir = watchDir;
   },
   watch() {
     if (this._options) {
@@ -25,8 +29,7 @@ const Watcher = {
   },
   source() {
     if (Watcher.instance) {
-			let paths = Watcher.instance.watched();
-			return paths;
+      return Watcher.instance.watched();
     }
   },
   destroy() {

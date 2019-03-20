@@ -1,9 +1,10 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const GenerateRouterWebpackPlugin = require("generate-router-webpack-plugin");
+const GenerateRouterWebpackPlugin = require("path-to-router-webpack-plugin");
 const merge = require("webpack-merge");
-const { resolve } = require("path");
+const path = require("path");
 
+const resolve = relativePath => path.resolve(__dirname, "../", relativePath);
 const base = require("./webpack.base");
 
 module.exports = merge(base, {
@@ -17,10 +18,12 @@ module.exports = merge(base, {
   },
   plugins: [
     new GenerateRouterWebpackPlugin({
-      watchDir: resolve(__dirname, "../src/pages")
+      watchDir: resolve("src/pages"),
+      template: resolve("src/AutoRouter.tpl"),
+      output: resolve("src/AutoRouter.js")
     }),
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, "../public/index.html")
+      template: resolve("public/index.html")
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()

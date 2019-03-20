@@ -20,13 +20,13 @@ class RouterRoot extends React.Component {
         <Suspense fallback={<div>Loading</div>}>
           <Router>
             <DefaultPage path="/">
-              <AlertPage path="alert">
-                <AlertDefaultPage path="/" />
-                <AlertInstancePage path=":alertId" />
-                <AlertSDTPage path="SDT" />
+              <AlertPage path="/alert">
+                <AlertDefaultPage path="/alert/" />
+                <AlertInstancePage path="/alert/:alertId" />
+                <AlertSDTPage path="/alert/SDT" />
               </AlertPage>
-              <DashboardPage path="dashboard">
-                <DashboadDefaultPage path="/" />
+              <DashboardPage path="/dashboard">
+                <DashboadDefaultPage path="/dashboard/" />
               </DashboardPage>
             </DefaultPage>
           </Router>
