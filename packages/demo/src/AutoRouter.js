@@ -4,14 +4,16 @@ import { hot } from "react-hot-loader";
 
 import ErrorBoundary from "./common/utils/ErrorBoundary";
 
-const DefaultPage = lazy(() => import("./pages"));
-const AlertPage = lazy(() => import("./pages/Alert.js"));
-const AlertInstancePage = lazy(() => import("./pages/Alert/_alertId/index.js"));
-const AlertDefaultPage = lazy(() => import("./pages/Alert/index.js"));
-const AlertSDTPage = lazy(() => import("./pages/Alert/SDT.js"));
+// --------------- /Alert.js---------------
+const Page10000 = lazy(() => import("./pages/Alert.js"));
+const Page10001 = lazy(() => import("./pages/Alert/index.js"));
+const Page10002 = lazy(() => import("./pages/Alert/SDT.js"));
+const Page10003 = lazy(() => import("./pages/Alert/_alertId/index.js"));
+// --------------- /Dashboard.js---------------
+const Page10004 = lazy(() => import("./pages/Dashboard.js"));
+const Page10005 = lazy(() => import("./pages/Dashboard/index.js"));
 
-const DashboardPage = lazy(() => import("./pages/Dashboard.js"));
-const DashboadDefaultPage = lazy(() => import("./pages/Dashboard/index.js"));
+const PageRoot = lazy(() => import("./pages/index.js"));
 
 class RouterRoot extends React.Component {
   render() {
@@ -19,16 +21,16 @@ class RouterRoot extends React.Component {
       <ErrorBoundary>
         <Suspense fallback={<div>Loading</div>}>
           <Router>
-            <DefaultPage path="/">
-              <AlertPage path="/alert">
-                <AlertDefaultPage path="/alert/" />
-                <AlertInstancePage path="/alert/:alertId" />
-                <AlertSDTPage path="/alert/SDT" />
-              </AlertPage>
-              <DashboardPage path="/dashboard">
-                <DashboadDefaultPage path="/dashboard/" />
-              </DashboardPage>
-            </DefaultPage>
+            <PageRoot path="/">
+              <Page10000 path="/Alert">
+                <Page10001 path="/" />
+                <Page10002 path="SDT" />
+                <Page10003 path=":alertId" />
+              </Page10000>
+              <Page10004 path="/Dashboard">
+                <Page10005 path="/" />
+              </Page10004>
+            </PageRoot>
           </Router>
         </Suspense>
       </ErrorBoundary>

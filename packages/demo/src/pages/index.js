@@ -6,10 +6,10 @@ export default ({ children }) => (
     <h1>Hello word</h1>
     <ul>
       <li>
-				<Link to="/alert">alert</Link>
+				<Link to="/Alert">alert</Link>
 			</li>
       <li>
-				<Link to="/dashboard">dashboard</Link>
+				<Link to="/Dashboard">dashboard</Link>
 			</li>
     </ul>
     <div className="content">{children}</div>

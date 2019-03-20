@@ -1,5 +1,5 @@
 import fs, { readFile, writeFile } from "fs-extra";
-import { getFiles, createRoutes } from "./utils";
+import { getFiles, createRoutes, walk } from "./utils";
 import template from "lodash/template";
 
 export default {
@@ -21,9 +21,9 @@ export default {
 
       let routes = createRoutes(files, this._options.watchDir);
 
-      debugger;
-
-      await writeFile(this._options.output, compiler(), "utf-8");
+      await writeFile(this._options.output, compiler({
+        routes
+      }), "utf-8");
 
       callback();
 
