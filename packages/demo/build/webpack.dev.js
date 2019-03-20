@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const GenerateRouterWebpackPlugin = require("path-to-router-webpack-plugin");
+const PathToRouterWebpackPlugin = require("path-to-router-webpack-plugin");
 const merge = require("webpack-merge");
 const path = require("path");
 
@@ -17,7 +17,7 @@ module.exports = merge(base, {
     historyApiFallback: true
   },
   plugins: [
-    new GenerateRouterWebpackPlugin({
+    new PathToRouterWebpackPlugin({
       watchDir: resolve("src/pages"),
       template: resolve("src/AutoRouter.tpl"),
       output: resolve("src/AutoRouter.js")

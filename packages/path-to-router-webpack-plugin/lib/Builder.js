@@ -1,26 +1,27 @@
 import fs, { readFile, writeFile } from "fs-extra";
-import utils from "./utils";
+import { getFiles, createRoutes } from "./utils";
 import template from "lodash/template";
-
-const cwd = process.cwd();
 
 export default {
   _options: {
-    watchAbsoluteDir: null,
+    template: null,
     template: null,
     output: null
   },
   setOptions({ watchDir, template, output }) {
-    this._options.watchAbsoluteDir = watchDir;
-    this._options.watchRelativeDir = watchDir.replace(cwd, "");
+    this._options.watchDir = watchDir;
     this._options.template = template;
     this._options.output = output;
   },
   async build(source, callback = () => {}) {
     try {
-      let files = utils.getFiles(source);
+      let files = getFiles(source);
       let tpl = await readFile(this._options.template, "utf-8");
       let compiler = template(tpl);
+
+      let routes = createRoutes(files, this._options.watchDir);
+
+      debugger;
 
       await writeFile(this._options.output, compiler(), "utf-8");
 
