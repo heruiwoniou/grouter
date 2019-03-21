@@ -14,13 +14,14 @@ const Page10003 = lazy(() => import("./pages/Dashboard.js"));
 const Page10004 = lazy(() => import("./pages/Dashboard/index.js"));
 const Page10005 = lazy(() => import("./pages/Dashboard/Ops.js"));
 const Page10006 = lazy(() => import("./pages/Dashboard/Panel.js"));
-const Page10007 = lazy(() => import("./pages/Dashboard/Panel/_widgetId.js"));
+const Page10007 = lazy(() => import("./pages/Dashboard/Panel/_instanceId/_widgetId.js"));
+const Page10008 = lazy(() => import("./pages/Dashboard/Panel/_groupId/_instanceId/_widgetId.js"));
 // --------------- /Settings.js---------------
-const Page10008 = lazy(() => import("./pages/Settings.js"));
-const Page10009 = lazy(() => import("./pages/Settings/index.js"));
-const Page10010 = lazy(() => import("./pages/Settings/Collectors.js"));
-const Page10011 = lazy(() => import("./pages/Settings/Logs.js"));
-const Page10012 = lazy(() => import("./pages/Settings/Users.js"));
+const Page10009 = lazy(() => import("./pages/Settings.js"));
+const Page10010 = lazy(() => import("./pages/Settings/index.js"));
+const Page10011 = lazy(() => import("./pages/Settings/Collectors.js"));
+const Page10012 = lazy(() => import("./pages/Settings/Logs.js"));
+const Page10013 = lazy(() => import("./pages/Settings/Users.js"));
 
 const PageRoot = lazy(() => import("./pages/index.js"));
 
@@ -40,15 +41,16 @@ class RouterRoot extends React.Component {
                 <Page10004 path="/" />
                 <Page10005 path="Ops" />
                 <Page10006 path="Panel">
-                  <Page10007 path=":widgetId" />
+                  <Page10007 path=":instanceId/:widgetId?" />
+                  <Page10008 path=":groupId/:instanceId?/:widgetId?" />
               </Page10006>
               </Page10003>
-              <Page10008 path="/Settings">
-                <Page10009 path="/" />
-                <Page10010 path="Collectors" />
-                <Page10011 path="Logs" />
-                <Page10012 path="Users" />
-              </Page10008>
+              <Page10009 path="/Settings">
+                <Page10010 path="/" />
+                <Page10011 path="Collectors" />
+                <Page10012 path="Logs" />
+                <Page10013 path="Users" />
+              </Page10009>
               
             </PageRoot>
           </Router>

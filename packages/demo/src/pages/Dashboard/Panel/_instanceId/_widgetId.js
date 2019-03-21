@@ -2,7 +2,7 @@ import React from "react";
 import Drawer from "@material-ui/core/Drawer";
 import styled from "styled-components";
 
-export default ({ widgetId }) => (
+export default ({ widgetId, groupId, intanceId }) => (
   <Drawer
     anchor="right"
     open={true}
