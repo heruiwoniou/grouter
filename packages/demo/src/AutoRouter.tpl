@@ -1,5 +1,9 @@
 <%
 
+function mktab(tab, count) {
+  return new Array(count).fill(tab).reduce((t, n) => t + n, "");
+}
+
 function walk(data, handle, deep = 0) {
   let l = data.length;
   for(var i = 0; i < l; i++) {
@@ -44,33 +48,34 @@ class RouterRoot extends React.Component {
         <Suspense fallback={<div>Loading</div>}>
           <Router>
             <PageRoot path="/">
-            <%
-              let routeCount = 10000;
-              let deepArray = [];
-              walk(routes.filter(({ name }) => name != 'index'), function({ children = [], path }, deep) {
-                path = path == "" ? "/" : path;
-                if(deepArray.length != 0 && deepArray[deepArray.length - 1][0] == deep) {
-                  let [, closeTag] = deepArray.pop();
-            %></<%=closeTag%>>
-            <%
-                }
+              <%
+                let routeCount = 10000;
+                let deepArray = [];
+                let tab = "  ";
+                walk(routes.filter(({ name }) => name != 'index'), function({ children = [], path }, deep) {
+                  path = path == "" ? "/" : path;
+                  if(deepArray.length != 0 && deepArray[deepArray.length - 1][0] == deep) {
+                    let [, closeTag] = deepArray.pop();
+              %><%=mktab(tab, deep)%></<%=closeTag%>>
+              <%
+                  }
 
-                let hasChild = children.length > 0;
-                let componentName = "Page" + (routeCount++);
-                if (hasChild) {
-                  deepArray.push([deep, componentName]);
-            %><<%=componentName%> path="<%=path%>">
-            <%
-                } else {
-            %><<%=componentName%> path="<%=path%>" />
-            <%
-                }
-              });
-              deepArray.forEach(([, closeTag]) => {
-            %></<%=closeTag%>>
-            <%
-              })
-            %>
+                  let hasChild = children.length > 0;
+                  let componentName = "Page" + (routeCount++);
+                  if (hasChild) {
+                    deepArray.push([deep, componentName]);
+              %><%=mktab(tab, deep)%><<%=componentName%> path="<%=path%>">
+              <%
+                  } else {
+              %><%=mktab(tab, deep)%><<%=componentName%> path="<%=path%>" />
+              <%
+                  }
+                });
+                deepArray.forEach(([deep, closeTag]) => {
+              %><%=mktab(tab, deep)%></<%=closeTag%>>
+              <%
+                })
+              %>
             </PageRoot>
           </Router>
         </Suspense>

@@ -6,7 +6,7 @@ export default ({ children }) => (
     <h2>Default empty Alert content</h2>
     <ul>
       {["1", "2", "3", "4", "5", "6", "7"].map(id => (
-        <li>
+        <li key={id}>
           <Link to={id}>Alert Instance {id}</Link>
         </li>
       ))}
