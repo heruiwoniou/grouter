@@ -7,7 +7,7 @@ npm install lerna --global
 lerna bootstrap
 ```
 
-## development
+## play with the demo
 
 ### step 1: build the plugin
 
