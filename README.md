@@ -22,3 +22,7 @@ npm run build
 cd packages/demo
 npm run dev
 ```
+
+## debug the plugin with vscode
+
+The <code>launch.json</code> file has been added to provide plug-in debugging
