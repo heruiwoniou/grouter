@@ -1,8 +1,4 @@
 import React from "react";
+import { Redirect } from "@reach/router";
 
-export default ({ children }) => (
-  <div>
-    <h2>Default empty Dashboard Page</h2>
-    <div className="dashboard-content">{children}</div>
-  </div>
-);
+export default () => <Redirect noThrow from="/Dashboard/" to="/Dashboard/Panel"/>

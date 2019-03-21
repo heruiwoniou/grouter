@@ -53,8 +53,9 @@ class RouterRoot extends React.Component {
                 let deepArray = [];
                 let tab = "  ";
                 walk(routes.filter(({ name }) => name != 'index'), function({ children = [], path }, deep) {
-                  path = path == "" ? "/" : path;
-                  if(deepArray.length != 0 && deepArray[deepArray.length - 1][0] == deep) {
+                  path = path == "" ? "/" : path.replace("?", "");
+                  while(deepArray.length != 0 && deepArray[deepArray.length - 1][0] >= deep)
+                  {
                     let [, closeTag] = deepArray.pop();
               %><%=mktab(tab, deep)%></<%=closeTag%>>
               <%
@@ -74,8 +75,7 @@ class RouterRoot extends React.Component {
                 deepArray.forEach(([deep, closeTag]) => {
               %><%=mktab(tab, deep)%></<%=closeTag%>>
               <%
-                })
-              %>
+                })%>
             </PageRoot>
           </Router>
         </Suspense>
