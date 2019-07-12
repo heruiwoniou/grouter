@@ -1,1 +1,1 @@
-# demo plugin test
+# plugin to generate the route

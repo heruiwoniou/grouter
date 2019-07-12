@@ -1,7 +1,5 @@
 # The use of the plugin
 
-
-
 ## install
 
 ```bash
