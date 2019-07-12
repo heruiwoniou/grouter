@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const PathToRouterWebpackPlugin = require("path-to-router-webpack-plugin");
+const PathToRouterWebpackPlugin = require("@grouter/path-to-router-webpack-plugin");
 const merge = require("webpack-merge");
 const path = require("path");
 
